@@ -56,7 +56,7 @@ beforeEach(() => {
   sleepRepository2 = new SleepRepository(dataSleep2, 2);
 });
 
-describe('SleepRepository', () => {
+describe.only('SleepRepository', () => {
   it('should be a function', () => {
     expect(SleepRepository).to.be.a('function');
   });
@@ -82,11 +82,11 @@ describe('SleepRepository', () => {
   });
 
   it('should return the user"s average number of hours slept per day', () => {
-    expect(sleepRepository.getAllTimeAvg()).to.equal(9);
+    expect(sleepRepository.getAverageOf('hoursSlept')).to.equal(8.6);
   });
 
   it('should return the user"s average sleep quality per day over all time', () => {
-    expect(sleepRepository.getQualitySleepAvg()).to.equal(2.9);
+    expect(sleepRepository.getAverageOf('sleepQuality')).to.equal(2.9);
   });
 
   it('should return how many hours the user slept for a specific day', () => {
