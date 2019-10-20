@@ -56,7 +56,7 @@ beforeEach(() => {
   sleepRepository2 = new SleepRepository(dataSleep2, 2);
 });
 
-describe.only('SleepRepository', () => {
+describe('SleepRepository', () => {
   it('should be a function', () => {
     expect(SleepRepository).to.be.a('function');
   });
