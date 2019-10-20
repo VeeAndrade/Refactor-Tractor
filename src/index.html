@@ -1,114 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,400,700&display=swap" rel="stylesheet">
-  <title>FitLit • Activity Tracker</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-</head>
-
-<body>
-  <nav>
-    <div>
-      <h2>FitLit</h2>
-      <h6 id="date"></h6>
-    </div>
-  </nav>
-  <header>
-    <div id="name">
-    </div>
-    <ul>
-      <li>Address: <span id="address"></span></li>
-      <li>Email: <span id="email"></span></li>
-      <li>Stride Length: <span id="strideLength"></span></li>
-      <li>Daily Step Goal: <span id="stepGoal"></span></li>
-      <li>Friends: <span id="friend-list"></span></li>
-    </ul>
-  </header>
-  <main>
-    <section class="main__section--steps main__sections">
-      <h3 class="section__h3--title">Steps</h3>
-      <section class="steps--container widget--container">
-        <article class="steps__article--1 article--widget">
-          <h5>DAILY STEP GOAL</h5>
-          <canvas id="step-goal-chart"></canvas>
-          <p id="step-compare">
-          </p>
-        </article>
-        <article class="steps__article--2 article--widget">
-          <h5>WEEKLY FRIEND SCOREBOARD</h5>
-          <ul id="friend-weekly-steps"></ul>
-        </article>
-        <article class="steps__article--3 article--widget">
-          <h5>TRENDS</h5>
-          <img class="trend-icon" src="./images/trend-icon.png">
-          <div id="step-trends"></div>
-        </article>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,400,700&display=swap" rel="stylesheet">
+    <title>FitLit • Activity Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  </head>
+  <body>
+    <nav>
+      <div>
+        <h2>FitLit</h2>
+        <h6 id="date"></h6>
+      </div>
+    </nav>
+    <header>
+      <div id="name">
+      </div>
+      <ul>
+        <li>Address: <span id="address"></span></li>
+        <li>Email: <span id="email"></span></li>
+        <li>Stride Length: <span id="strideLength"></span></li>
+        <li>Daily Step Goal: <span id="stepGoal"></span></li>
+        <li>Friends: <span id="friend-list"></span></li>
+      </ul>
+    </header>
+    <main>
+      <section class="main__section--steps main__sections">
+        <h3 class="section__h3--title">Steps</h3>
+        <section class="steps--container widget--container">
+          <article class="steps__article--1 article--widget">
+            <h5>DAILY STEP GOAL</h5>
+            <canvas id="step-goal-chart"></canvas>
+            <p id="step-compare">
+            </p>
+          </article>
+          <article class="steps__article--2 article--widget">
+            <h5>WEEKLY FRIEND SCOREBOARD</h5>
+            <ul id="friend-weekly-steps"></ul>
+          </article>
+          <article class="steps__article--3 article--widget">
+            <h5>TRENDS</h5>
+            <img class="trend-icon" src="./images/trend-icon.png">
+            <div id="step-trends"></div>
+          </article>
+        </section>
       </section>
-    </section>
-    <section class="main__section--hydration main__sections">
-      <h3 class="section__h3--title">Hydration</h3>
-      <section class="hydration--container widget--container">
-        <article class="hydration__article--1 article--widget" id="daily-oz">
-          <h5>DAILY OZ</h5>
-          <img class="water-icon" src="./images/water-icon.png">
-        </article>
-        <img class="man-icon" src="./images/little-man-icon.svg">
-        <article class="hydration__article--2 article--widget">
-          <h5>WEEKLY OZ</h5>
-          <canvas id="weekly-oz-graph"></canvas>
-          <ul id="weekly-oz"></ul>
-        </article>
+      <section class="main__section--hydration main__sections">
+        <h3 class="section__h3--title">Hydration</h3>
+        <section class="hydration--container widget--container">
+          <article class="hydration__article--1 article--widget" id="daily-oz">
+            <h5>DAILY OZ</h5>
+            <img class="water-icon" src="./images/water-icon.png">
+          </article>
+          <img class="man-icon" src="./images/little-man-icon.svg">
+          <article class="hydration__article--2 article--widget">
+            <h5>WEEKLY OZ</h5>
+            <canvas id="weekly-oz-graph"></canvas>
+            <ul id="weekly-oz"></ul>
+          </article>
+        </section>
       </section>
-    </section>
-    </section>
-    <section class="main__section--sleep main__sections">
-      <h3 class="section__h3--title">Sleep</h3>
-      <section class="sleep--container widget--container">
-        <article class="sleep__article--1 article--widget">
-          <h5>HOURS SLEPT</h5>
-          <img class="sleep-icon" src="./images/sleep-icon.png">
-          <div id="yesterday-sleep""></div>
-        </article>
-        <article class=" sleep__article--2 article--widget">
-            <h5>YOUR SLEEPING CHART</h5>
-            <canvas id="weekly-sleep"></canvas>
-        </article>
-        <article class="sleep__article--3 article--widget">
-          <h5>ALL-TIME STATS</h5>
-          <img class="trend-icon" src="./images/crown-icon.png">
-          <div id="all-time-sleep" class="all-time-sleep"></div>
-        </article>
       </section>
-    </section>
-    <section class="main__section--activity main__sections">
-      <h3 class="section__h3--title">Activity</h3>
-      <section class="activity--container--1 widget--container">
-        <article class="activity__article--1 article--widget">
-          <h5>TODAY'S ACTIVITY</h5>
-          <img class="exercise-icon" src="./images/exercise.icon.png">
-          <div id="daily-activity" class="article__widget--div"></div>
-        </article>
-        <img class="step-icon" src="./images/step-icon.png">
-        <article class="activity__article--2 article--widget">
-          <h5>WORLD COMPARISON</h5>
-          <img class="globe-icon" src="./images/globe-icon.png">
-          <div id="compare-activity"></div>
-        </article>
+      <section class="main__section--sleep main__sections">
+        <h3 class="section__h3--title">Sleep</h3>
+        <section class="sleep--container widget--container">
+          <article class="sleep__article--1 article--widget">
+            <h5>HOURS SLEPT</h5>
+            <img class="sleep-icon" src="./images/sleep-icon.png">
+            <div id="yesterday-sleep""></div>
+          </article>
+          <article class=" sleep__article--2 article--widget">
+              <h5>YOUR SLEEPING CHART</h5>
+              <canvas id="weekly-sleep"></canvas>
+          </article>
+          <article class="sleep__article--3 article--widget">
+            <h5>ALL-TIME STATS</h5>
+            <img class="trend-icon" src="./images/crown-icon.png">
+            <div id="all-time-sleep" class="all-time-sleep"></div>
+          </article>
+        </section>
       </section>
-      <section class="activity--container--2 widget--container">
-        <article class="activity__article--3 article--widget">
-          <h5>WEEKLY STEP COUNT</h5>
-          <canvas id="weekly-steps-chart"></canvas>
-        </article>
-        <article class="activity__article--4 article--widget">
-          <h5>WEEKLY MINUTE COUNT</h5>
-          <canvas id="weekly-minutes-chart"></canvas>
-        </article>
-        <article class="activity__article--5 article--widget">
-          <h5>WEEKLY FLIGHT COUNT</h5>
-          <canvas id="weekly-flights-chart"></canvas>
-        </article>
-      </section>
-  </main>
-</body>
+      <section class="main__section--activity main__sections">
+        <h3 class="section__h3--title">Activity</h3>
+        <section class="activity--container--1 widget--container">
+          <article class="activity__article--1 article--widget">
+            <h5>TODAY'S ACTIVITY</h5>
+            <img class="exercise-icon" src="./images/exercise.icon.png">
+            <div id="daily-activity" class="article__widget--div"></div>
+          </article>
+          <img class="step-icon" src="./images/step-icon.png">
+          <article class="activity__article--2 article--widget">
+            <h5>WORLD COMPARISON</h5>
+            <img class="globe-icon" src="./images/globe-icon.png">
+            <div id="compare-activity"></div>
+          </article>
+        </section>
+        <section class="activity--container--2 widget--container">
+          <article class="activity__article--3 article--widget">
+            <h5>WEEKLY STEP COUNT</h5>
+            <canvas id="weekly-steps-chart"></canvas>
+          </article>
+          <article class="activity__article--4 article--widget">
+            <h5>WEEKLY MINUTE COUNT</h5>
+            <canvas id="weekly-minutes-chart"></canvas>
+          </article>
+          <article class="activity__article--5 article--widget">
+            <h5>WEEKLY FLIGHT COUNT</h5>
+            <canvas id="weekly-flights-chart"></canvas>
+          </article>
+        </section>
+    </main>
+  </body>
 </html>
