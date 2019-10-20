@@ -76,8 +76,8 @@ class ActivityRepository {
     return parseFloat((miles * 1.609).toFixed(1));
   }
 
-  getDailyStats(date, detail) {
-    return this.getUserDate(date)[detail];
+  getDailyStats(date, property) {
+    return this.getUserDate(date)[property];
   }
 
   getWeeklyStats(date) {
