@@ -141,9 +141,11 @@ describe('ActivityRepository', () => {
       ]);
   });
 
-  it('should return the positive or negative trend dates', () => {
+  it('should return the positive trend dates', () => {
     expect(activityRepository.getStepTrends(true)).to.deep.equal(['2019/08/20', '2019/08/23']);
-    expect(activityRepository.getStepTrends(false)).to.deep.equal([])
   });
 
+  it('should return the negative trend dates', () => {
+    expect(activityRepository.getStepTrends(false)).to.deep.equal([]);
+  });
 });
