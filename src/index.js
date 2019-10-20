@@ -204,7 +204,7 @@ function displayActivity() {
 function displayAverageWeeklyActivity() {
   const averageStairsDay = activityRepository.getAverageStairsDay(getCurrentDate());
   const averageStepsDay = activityRepository.getAverageStepsDay(getCurrentDate());
-  const averageMinutesDay = activityRepository.getAvergageMinutesActive(getCurrentDate());
+  const averageMinutesDay = activityRepository.getAverageMinutesActive(getCurrentDate());
   const getDailyFlights = activityRepository.getDailyStats(getCurrentDate(), 'flightsOfStairs');
   const getDailySteps = activityRepository.getDailyStats(getCurrentDate(), 'numSteps');
   const getDailyMinutes = activityRepository.getDailyStats(getCurrentDate(), 'minutesActive');
