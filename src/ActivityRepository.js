@@ -111,7 +111,8 @@ class ActivityRepository {
       if (positive && (day.numSteps > this.user[index - 1].numSteps) &&
         (this.user[index - 1].numSteps > this.user[index - 2].numSteps)) {
         acc.push(day.date);
-      } if (!positive && (day.numSteps < this.user[index - 1].numSteps) &&
+      } 
+      if (!positive && (day.numSteps < this.user[index - 1].numSteps) &&
         (this.user[index - 1].numSteps < this.user[index - 2].numSteps)) {
         acc.push(day.date);
       }
