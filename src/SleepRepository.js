@@ -60,7 +60,6 @@ class SleepRepository {
     this.getAllIds().forEach(id => {
       let userLogs = this.sleepData.filter(log => log.userID === id);
       sorted.push(userLogs);
-
     });
 
     let allWeeklyData = sorted.reduce((accumulator, user) => {
