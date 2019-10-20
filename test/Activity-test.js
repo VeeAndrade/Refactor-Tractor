@@ -117,7 +117,7 @@ describe('ActivityRepository', () => {
   });
 
   it('should return the average number of minutes active for all users on a given date', () => {
-    expect(activityRepository.getAvergageMinutesActive('2019/08/25')).to.equal(226);
+    expect(activityRepository.getAverageMinutesActive('2019/08/25')).to.equal(226);
   });
 
   it('should return the number of kilometers a user walked in a given date', () => {
