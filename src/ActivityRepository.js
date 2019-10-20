@@ -80,7 +80,7 @@ class ActivityRepository {
     return Math.round(totalSteps / filteredDate.length);
   }
 
-  getAvergageMinutesActive(date) {
+  getAverageMinutesActive(date) {
     const filteredDate = this.getFilteredDate(date);
     const totalMinutes = filteredDate.reduce((total, log) => {
       total += log.minutesActive;
