@@ -62,31 +62,13 @@ class ActivityRepository {
     };
   }
 
-  getAverageStairsDay(date) {
+  getAverages(date, property) {
     const filteredDate = this.getFilteredDate(date);
-    const totalStairs = filteredDate.reduce((total, log) => {
-      total += log.flightsOfStairs;
+    const total = filteredDate.reduce((total, log) => {
+      total += log[property];
       return total;
     }, 0);
-    return Math.round(totalStairs / filteredDate.length);
-  }
-
-  getAverageStepsDay(date) {
-    const filteredDate = this.getFilteredDate(date);
-    const totalSteps = filteredDate.reduce((total, log) => {
-      total += log.numSteps;
-      return total;
-    }, 0);
-    return Math.round(totalSteps / filteredDate.length);
-  }
-
-  getAvergageMinutesActive(date) {
-    const filteredDate = this.getFilteredDate(date);
-    const totalMinutes = filteredDate.reduce((total, log) => {
-      total += log.minutesActive;
-      return total;
-    }, 0);
-    return Math.round(totalMinutes / filteredDate.length);
+    return Math.round(total / filteredDate.length);
   }
 
   getKilometersWalked(date, user) {
@@ -94,8 +76,8 @@ class ActivityRepository {
     return parseFloat((miles * 1.609).toFixed(1));
   }
 
-  getDailyStats(date, detail) {
-    return this.getUserDate(date)[detail];
+  getDailyStats(date, property) {
+    return this.getUserDate(date)[property];
   }
 
   getWeeklyStats(date) {
