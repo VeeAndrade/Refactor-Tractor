@@ -10,19 +10,26 @@ class SleepRepository {
   }
 
   getAllTimeAvg() {
-    const totalHrs = this.user.reduce((totalHours, day) => {
-      totalHours += day.hoursSlept;
-      return totalHours;
-    }, 0);
-    return Math.round(totalHrs / this.user.length);
+    const total = this.getTotalOf('hoursSlept', 'user')
+    return parseFloat((total / this.user.length).toFixed(1));
   }
 
   getQualitySleepAvg() {
-    const sleepQualAvg = this.user.reduce((sleepQual, day) => {
-      sleepQual += day.sleepQuality;
-      return sleepQual;
+    const total = this.getTotalOf('sleepQuality', 'user')
+    return parseFloat((total / this.user.length).toFixed(1));
+  }
+
+  getAvgQuality() {
+    const total = this.getTotalOf('sleepQuality', 'sleepData')
+    return parseFloat((total / this.sleepData.length).toFixed(1));
+  }
+
+  getTotalOf(metric, datatype) {
+    const total = this[datatype].reduce((acc, day) => {
+      acc += day[metric];
+      return acc;
     }, 0);
-    return parseFloat((sleepQualAvg / this.user.length).toFixed(1));
+    return total;
   }
 
   getDailySleepHours(date) {
@@ -34,24 +41,10 @@ class SleepRepository {
     return this.user.slice(i - 6, i + 1);
   }
 
-  getWeeklyHours(date) {
+  getWeeklyMetric(date, metric) {
     return this.weeklySleepData(date).map(day => {
-      return { date: day.date, hoursSlept: day.hoursSlept };
+      return {date: day.date, [metric]: day[metric]};
     });
-  }
-
-  getWeeklyQuality(date) {
-    return this.weeklySleepData(date).map(day => {
-      return { date: day.date, sleepQuality: day.sleepQuality };
-    });
-  }
-
-  getAvgQuality() {
-    const avgQual = this.sleepData.reduce((totalQual, day) => {
-      totalQual += day.sleepQuality;
-      return totalQual;
-    }, 0);
-    return parseFloat((avgQual / this.sleepData.length).toFixed(1));
   }
 
   getAllIds() {
