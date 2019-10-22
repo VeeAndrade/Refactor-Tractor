@@ -35,7 +35,7 @@ class UtilityRepository {
 
   getAverage(id, dataType, dataKey) {
     const { total, userInfo } = this.getTotal(id, dataType, dataKey);
-    return (total / userInfo.length).toFixed(1);
+    return parseFloat((total / userInfo.length).toFixed(1));
   }
 }
 
