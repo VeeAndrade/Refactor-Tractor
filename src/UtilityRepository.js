@@ -6,12 +6,12 @@ class UtilityRepository {
     this.activityData = activityData;
   }
   
-  getUserLogs(id, dataType) { 
+  getUserLogs(id, dataType) {
     return this[dataType].filter(user => user.userID === id);
   }
 
   getUserInfoByDate(id, date, dataType) {
-    return getUserLogs(id, dataType).find(log => log.date === date);
+    return this.getUserLogs(id, dataType).find(log => log.date === date);
   }
 
   getAllUserInfoByDate(date, dataType) {
@@ -19,13 +19,13 @@ class UtilityRepository {
   }
 
   getWeeksData(id, date, dataType) {
-    const userInfo = getUserLogs(id, dataType);
+    const userInfo = this.getUserLogs(id, dataType);
     let i = userInfo.findIndex(day => day.date === date);
     return userInfo.slice(i - 6, i + 1);
   }
 
   getTotal(id, dataType, dataKey) {
-    const userInfo = getUserLogs(id, dataType);
+    const userInfo = this.getUserLogs(id, dataType);
     const total = userInfo.reduce((acc, day) => {
       acc += day[dataKey];
       return acc;
@@ -34,8 +34,8 @@ class UtilityRepository {
   }
 
   getAverage(id, dataType, dataKey) {
-    const { total, userInfo } = getTotal(id, dataType, dataKey);
-    return Math.round(total / userInfo.length);
+    const { total, userInfo } = this.getTotal(id, dataType, dataKey);
+    return (total / userInfo.length).toFixed(1);
   }
 }
 
