@@ -5,6 +5,7 @@
   --background-light: #015492;
   --light-text: #bfc0c0;
   --box-background: #ffffff;
+  --contrast-accent: #015492
 }
 
 * {
@@ -26,7 +27,7 @@ nav {
   background-image: linear-gradient(white, #e2e2e2);
   color: #2b8b9e;
   display: flex;
-  font-size: 18px;
+  font-size: 1em;
   height: 50px;
   justify-content: center;
   width: 100%;
@@ -151,7 +152,7 @@ h3 {
 
 .hydration__article--1 span,
 .sleep__article--1 span {
-  color: var(--accent-color);
+  color: var(--contrast-accent);
   font-size: 30px;
   font-weight: bold;
 }
@@ -189,7 +190,7 @@ h5 {
 }
 
 .friend-1 span {
-  background: -webkit-linear-gradient(#f0a83d, #f0cf3d);
+  background: -webkit-linear-gradient(#1a353f, #015492);
   font-size: 28px;
   font-weight: bold;
   -webkit-background-clip: text;
@@ -247,7 +248,7 @@ h5 {
   }
 
 .steps__article--3 span {
-  color: var(--accent-color);
+  color: var(--contrast-accent);
   font-size: 30px;
   font-weight: bold;
 }
@@ -266,7 +267,7 @@ h5 {
 }
 
 .all-time-sleep span {
-  color: var(--accent-color);
+  color: var(--contrast-accent);
   font-size: 32px;
   font-weight: bold;
 }
@@ -292,7 +293,7 @@ h5 {
 }
 
 .article__widget--div span {
-  color: #89be43;
+  color: var(--contrat);
   font-size: 22px;
   font-weight: bold;
 }
@@ -312,7 +313,7 @@ h5 {
 }
 
 #compare-activity span {
-  color: var(--accent-color);
+  color: var(--contrast-accent);
   font-size: 23px;
   font-weight: bold;
 }
