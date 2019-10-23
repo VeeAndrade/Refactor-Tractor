@@ -77,21 +77,25 @@ Promise.all([userData]).then(element => {
   sleepRepository = new SleepRepository(sleepData, randomId);
   activityRepository = new ActivityRepository(randomId, activityData);
   user = new User(userRepository.getUserData());
-})
+}).then(() => {
+  displayAllData()
+});
 
-updateUserDataDOM(userRepository.getUserData());
-compareStepGoal(userRepository.getUserData());
-displayDailyOz();
-displayWeeklyOz();
-displayBestSleepers();
-displayCurrentDate(getCurrentDate());
-displaySleep();
-displayActivity();
-displayAverageWeeklyActivity();
-displayWeeklyActivity();
-friendActivityData(getCurrentDate());
-displayTrends();
-displaySleepChart()
+function displayAllData() {
+  updateUserDataDOM(userRepository.getUserData());
+  compareStepGoal(userRepository.getUserData());
+  displayDailyOz();
+  displayWeeklyOz();
+  displayBestSleepers();
+  displayCurrentDate(getCurrentDate());
+  displaySleep();
+  displayActivity();
+  displayAverageWeeklyActivity();
+  displayWeeklyActivity();
+  friendActivityData(getCurrentDate());
+  displayTrends();
+  displaySleepChart()
+}
 
 function updateUserDataDOM(userInfo) {
   $(`<p>Welcome,</p><h1>${user.getFirstName()}</h1>`).prependTo(name);
