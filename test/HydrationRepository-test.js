@@ -2,8 +2,9 @@ const chai = require('chai');
 const expect = chai.expect;
 
 import HydrationRepository from '../src/HydrationRepository';
+import UtilityRepository from '../src/UtilityRepository';
 
-let dataHydration, hydrationRepository;
+let dataHydration, hydrationRepository, utilityRepository;
 
 beforeEach(() => {
   dataHydration =
@@ -19,6 +20,7 @@ beforeEach(() => {
       { userID: 12, date: "2019/08/22", numOunces: 58 }
     ];
 
+  utilityRepository = new UtilityRepository([], [], dataHydration, []);
   hydrationRepository = new HydrationRepository(dataHydration, 12);
 });
 
@@ -50,8 +52,8 @@ describe('HydrationRepository', () => {
     expect(hydrationRepository.getAllTimeAvg()).to.equal(70);
   });
 
-  it('should return how many fluid oz they consumed for a specific day', () => {
-    expect(hydrationRepository.totalOzDay('2019/08/22')).to.equal(58);
+  it.only('should return how many fluid oz they consumed for a specific day', () => {
+    expect(hydrationRepository.totalOzDay(12, '2019/08/22', 'hydrationData')).to.equal(58);
   });
 
   it('should return fluid oz of water consumed each day over the course of a week', () => {

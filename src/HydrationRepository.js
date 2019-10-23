@@ -1,5 +1,8 @@
-class HydrationRepository {
-  constructor(data, id) {
+import UtilityRepository from '../src/UtilityRepository';
+
+class HydrationRepository extends UtilityRepository {
+  constructor(data, id, userData, sleepData, hydrationData, activityData) {
+    super(userData, sleepData, hydrationData, activityData);
     this.data = data;
     this.id = id;
     this.user = this.getHydrationData();
@@ -16,9 +19,9 @@ class HydrationRepository {
     }, 0) / this.user.length);
   }
 
-  totalOzDay(date) {
-    let foundUser = this.user.find(user => user.date === date);
-    return foundUser.numOunces;
+  totalOzDay(id, date, dataType) {
+    console.log(dataType);
+    return this.getUserInfoByDate(id, date, dataType).numOunces;
   }
 
   weeklyHydrationAvg(date) {

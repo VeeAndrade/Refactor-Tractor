@@ -7,14 +7,17 @@ class UtilityRepository {
   }
   
   getUserLogs(id, dataType) {
+    console.log(this.hydrationData);
     return this[dataType].filter(user => user.userID === id);
   }
 
   getUserInfoByDate(id, date, dataType) {
+    console.log("GetuserInforByDate:", dataType);
     return this.getUserLogs(id, dataType).find(log => log.date === date);
   }
 
   getAllUserInfoByDate(date, dataType) {
+    console.log('firing')
     return this[dataType].filter(log => log.date === date);
   }
 
