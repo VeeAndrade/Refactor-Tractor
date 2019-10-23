@@ -10,7 +10,10 @@ import ActivityRepository from './ActivityRepository';
 import HydrationRepository from './HydrationRepository';
 import SleepRepository from './SleepRepository';
 
-import userData from './data/users';
+// import userData from './data/users';
+var userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData')
+                    .then(response => response.json())
+                    .then(data => data.userData);
 import sleepData from './data/sleep';
 import hydrationData from './data/hydration';
 import activityData from './data/activity';
