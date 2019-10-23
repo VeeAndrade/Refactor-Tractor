@@ -10,7 +10,10 @@ import ActivityRepository from './ActivityRepository';
 import HydrationRepository from './HydrationRepository';
 import SleepRepository from './SleepRepository';
 
-import userData from './data/users';
+// import userData from './data/users';
+var userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData')
+                    .then(response => response.json())
+                    .then(data => data.userData);
 import sleepData from './data/sleep';
 import hydrationData from './data/hydration';
 import activityData from './data/activity';
@@ -59,26 +62,40 @@ const stepTrends = $('#step-trends');
 const stepGoalChart = $('#step-goal-chart');
 const friendList = $('#friend-list');
 
-const randomId = Math.floor(Math.random() * (50 - 1) + 1);
-const userRepository = new UserRepository(userData, randomId);
-const hydrationRepository = new HydrationRepository(hydrationData, randomId);
-const sleepRepository = new SleepRepository(sleepData, randomId);
-const activityRepository = new ActivityRepository(randomId, activityData);
-const user = new User(userRepository.getUserData());
+var randomId;
+var userRepository;
+var hydrationRepository;
+var sleepRepository;
+var activityRepository;
+var user;
 
-updateUserDataDOM(userRepository.getUserData());
-compareStepGoal(userRepository.getUserData());
-displayDailyOz();
-displayWeeklyOz();
-displayBestSleepers();
-displayCurrentDate(getCurrentDate());
-displaySleep();
-displayActivity();
-displayAverageWeeklyActivity();
-displayWeeklyActivity();
-friendActivityData(getCurrentDate());
-displayTrends();
-displaySleepChart()
+Promise.all([userData]).then(element => {
+  userData = element[0]
+  randomId = Math.floor(Math.random() * (50 - 1) + 1);
+  userRepository = new UserRepository(userData, randomId);
+  hydrationRepository = new HydrationRepository(hydrationData, randomId);
+  sleepRepository = new SleepRepository(sleepData, randomId);
+  activityRepository = new ActivityRepository(randomId, activityData);
+  user = new User(userRepository.getUserData());
+}).then(() => {
+  displayAllData()
+});
+
+function displayAllData() {
+  updateUserDataDOM(userRepository.getUserData());
+  compareStepGoal(userRepository.getUserData());
+  displayDailyOz();
+  displayWeeklyOz();
+  displayBestSleepers();
+  displayCurrentDate(getCurrentDate());
+  displaySleep();
+  displayActivity();
+  displayAverageWeeklyActivity();
+  displayWeeklyActivity();
+  friendActivityData(getCurrentDate());
+  displayTrends();
+  displaySleepChart()
+}
 
 function updateUserDataDOM(userInfo) {
   $(`<p>Welcome,</p><h1>${user.getFirstName()}</h1>`).prependTo(name);
