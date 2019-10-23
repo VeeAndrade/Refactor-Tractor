@@ -69,12 +69,15 @@ var sleepRepository;
 var activityRepository;
 var user;
 
-randomId = Math.floor(Math.random() * (50 - 1) + 1);
-userRepository = new UserRepository(userData, randomId);
-hydrationRepository = new HydrationRepository(hydrationData, randomId);
-sleepRepository = new SleepRepository(sleepData, randomId);
-activityRepository = new ActivityRepository(randomId, activityData);
-user = new User(userRepository.getUserData());
+Promise.all([userData]).then(element => {
+  userData = element[0]
+  randomId = Math.floor(Math.random() * (50 - 1) + 1);
+  userRepository = new UserRepository(userData, randomId);
+  hydrationRepository = new HydrationRepository(hydrationData, randomId);
+  sleepRepository = new SleepRepository(sleepData, randomId);
+  activityRepository = new ActivityRepository(randomId, activityData);
+  user = new User(userRepository.getUserData());
+})
 
 updateUserDataDOM(userRepository.getUserData());
 compareStepGoal(userRepository.getUserData());
