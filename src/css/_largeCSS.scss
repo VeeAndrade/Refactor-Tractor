@@ -1,0 +1,34 @@
+// Media Query for screen size over 1500px;
+@media (min-width: 1500px) {
+  header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    padding: 0 50px;
+    width: 94.5%;
+
+    h1 {
+      font-size: 2em;
+      margin: 0.4em 0;
+    }
+
+    li {
+      color: #d4d4d4;
+      font-size: 96%;
+      font-weight: 700;
+    }
+  }
+
+  main {
+    width: 100%;
+
+    .section__h3--title {
+      background-color: var(--background-light);
+      border-radius: 4px;
+      box-shadow: 10px 10px 30px var(--shadow);
+      padding: 10px 8px;
+      font-size: 20px;
+    }
+  }
+}
