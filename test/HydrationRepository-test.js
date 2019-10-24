@@ -4,7 +4,7 @@ const expect = chai.expect;
 import HydrationRepository from '../src/HydrationRepository';
 import UtilityRepository from '../src/UtilityRepository';
 
-let dataHydration, hydrationRepository, utilityRepository;
+let dataHydration, hydrationRepository;
 
 beforeEach(() => {
   dataHydration =
@@ -20,11 +20,10 @@ beforeEach(() => {
       { userID: 12, date: "2019/08/22", numOunces: 58 }
     ];
 
-  utilityRepository = new UtilityRepository([], [], dataHydration, []);
-  hydrationRepository = new HydrationRepository(dataHydration, 12);
+  hydrationRepository = new HydrationRepository(dataHydration, 12, [], [], dataHydration, []);
 });
 
-describe('HydrationRepository', () => {
+describe.only('HydrationRepository', () => {
   it('should be a function', () => {
     expect(HydrationRepository).to.be.a('function');
   });
@@ -34,7 +33,7 @@ describe('HydrationRepository', () => {
   });
 
   it('should be able to filter the user"s data by ID', () => {
-    expect(hydrationRepository.getHydrationData()).to.deep.equal(
+    expect(hydrationRepository.getUserLogs(12, 'hydrationData')).to.deep.equal(
       [
         { userID: 12, date: "2019/08/15", numOunces: 71 },
         { userID: 12, date: "2019/08/16", numOunces: 37 },
@@ -52,12 +51,12 @@ describe('HydrationRepository', () => {
     expect(hydrationRepository.getAllTimeAvg()).to.equal(70);
   });
 
-  it.only('should return how many fluid oz they consumed for a specific day', () => {
+  it('should return how many fluid oz they consumed for a specific day', () => {
     expect(hydrationRepository.totalOzDay(12, '2019/08/22', 'hydrationData')).to.equal(58);
   });
 
   it('should return fluid oz of water consumed each day over the course of a week', () => {
-    expect(hydrationRepository.weeklyHydrationAvg('2019/08/22')).to.deep.equal(
+    expect(hydrationRepository.getWeeksData(12, '2019/08/22', 'hydrationData')).to.deep.equal(
       [
         { userID: 12, date: '2019/08/16', numOunces: 37 },
         { userID: 12, date: '2019/08/17', numOunces: 97 },

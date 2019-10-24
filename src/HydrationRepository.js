@@ -5,12 +5,13 @@ class HydrationRepository extends UtilityRepository {
     super(userData, sleepData, hydrationData, activityData);
     this.data = data;
     this.id = id;
-    this.user = this.getHydrationData();
+    this.user = this.getUserLogs(id, 'hydrationData');
   }
 
-  getHydrationData() {
-    return this.data.filter((user => user.userID === this.id));
-  }
+  // getHydrationData(id, dataType) {
+  //   this.getUserLogs(id, dataType);
+  //   // return this.data.filter((user => user.userID === this.id));
+  // }
 
   getAllTimeAvg() {
     return Math.round(this.user.reduce((totalNumOz, ozPerDay) => {
@@ -24,10 +25,10 @@ class HydrationRepository extends UtilityRepository {
     return this.getUserInfoByDate(id, date, dataType).numOunces;
   }
 
-  weeklyHydrationAvg(date) {
-    const indexCurrentDay = this.user.findIndex(data => data.date === date);
-    return this.user.slice(indexCurrentDay - 6, indexCurrentDay + 1);
-  }
+  // weeklyHydrationAvg(date) {
+  //   const indexCurrentDay = this.user.findIndex(data => data.date === date);
+  //   return this.user.slice(indexCurrentDay - 6, indexCurrentDay + 1);
+  // }
 }
 
 export default HydrationRepository;
