@@ -10,7 +10,6 @@ import ActivityRepository from './ActivityRepository';
 import HydrationRepository from './HydrationRepository';
 import SleepRepository from './SleepRepository';
 
-// import userData from './data/users';
 var userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData')
   .then(response => response.json())
   .then(data => data.userData)
@@ -19,8 +18,9 @@ var sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sl
   .then(response => response.json())
   .then(data => data.sleepData)
   .catch(err => console.log(err));
-
-// import sleepData from './data/sleep';
+var hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData')
+  .then(response => response.json())
+  .then(data => console.log(data));
 // import hydrationData from './data/hydration';
 // import activityData from './data/activity';
 
@@ -82,7 +82,7 @@ Promise.all([userData, sleepData]).then(element => {
   userRepository = new UserRepository(userData, randomId);
   // hydrationRepository = new HydrationRepository(hydrationData, randomId);
   sleepRepository = new SleepRepository(sleepData, randomId);
-  debugger;
+  // debugger;
   // activityRepository = new ActivityRepository(randomId, activityData);
   // user = new User(userRepository.getUserData());
 }).then(() => {
