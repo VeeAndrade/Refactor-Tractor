@@ -22,6 +22,10 @@ var hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydr
   .then(response => response.json())
   .then(data => data.hydrationData)
   .catch(err => console.log(err));
+var activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData')
+  .then(response => response.json())
+  .then(data => data.activityData)
+  .catch(err => console.log(err));
 // import activityData from './data/activity';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
