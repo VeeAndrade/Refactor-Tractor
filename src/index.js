@@ -20,7 +20,8 @@ var sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sl
   .catch(err => console.log(err));
 var hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData')
   .then(response => response.json())
-  .then(data => console.log(data));
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
 // import hydrationData from './data/hydration';
 // import activityData from './data/activity';
 
