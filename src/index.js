@@ -82,9 +82,8 @@ Promise.all([userData, sleepData, hydrationData]).then(element => {
   hydrationData = element[2];
   randomId = Math.floor(Math.random() * (50 - 1) + 1);
   userRepository = new UserRepository(userData, randomId);
-  // hydrationRepository = new HydrationRepository(hydrationData, randomId);
   sleepRepository = new SleepRepository(sleepData, randomId);
-  // debugger;
+  hydrationRepository = new HydrationRepository(hydrationData, randomId);
   // activityRepository = new ActivityRepository(randomId, activityData);
   // user = new User(userRepository.getUserData());
 }).then(() => {
@@ -92,6 +91,7 @@ Promise.all([userData, sleepData, hydrationData]).then(element => {
 });
 
 function displayAllData() {
+  // debugger;
   updateUserDataDOM(userRepository.getUserData());
   compareStepGoal(userRepository.getUserData());
   // displayDailyOz();
