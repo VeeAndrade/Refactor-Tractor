@@ -13,10 +13,12 @@ import SleepRepository from './SleepRepository';
 // import userData from './data/users';
 var userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData')
   .then(response => response.json())
-  .then(data => data.userData);
+  .then(data => data.userData)
+  .catch(err => console.log(err));
 var sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData')
   .then(response => response.json())
-  .then(data => data.sleepData);
+  .then(data => data.sleepData)
+  .catch(err => console.log(err));
 
 // import sleepData from './data/sleep';
 // import hydrationData from './data/hydration';
