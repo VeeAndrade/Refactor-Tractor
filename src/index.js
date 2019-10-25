@@ -12,11 +12,15 @@ import SleepRepository from './SleepRepository';
 
 // import userData from './data/users';
 var userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData')
-                    .then(response => response.json())
-                    .then(data => data.userData);
-import sleepData from './data/sleep';
-import hydrationData from './data/hydration';
-import activityData from './data/activity';
+  .then(response => response.json())
+  .then(data => data.userData);
+var sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData')
+  .then(response => response.json())
+  .then(data => data.sleepData);
+
+// import sleepData from './data/sleep';
+// import hydrationData from './data/hydration';
+// import activityData from './data/activity';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
@@ -69,32 +73,34 @@ var sleepRepository;
 var activityRepository;
 var user;
 
-Promise.all([userData]).then(element => {
-  userData = element[0]
+Promise.all([userData, sleepData]).then(element => {
+  userData = element[0];
+  sleepData = element[1];
   randomId = Math.floor(Math.random() * (50 - 1) + 1);
   userRepository = new UserRepository(userData, randomId);
-  hydrationRepository = new HydrationRepository(hydrationData, randomId);
+  // hydrationRepository = new HydrationRepository(hydrationData, randomId);
   sleepRepository = new SleepRepository(sleepData, randomId);
-  activityRepository = new ActivityRepository(randomId, activityData);
-  user = new User(userRepository.getUserData());
+  debugger;
+  // activityRepository = new ActivityRepository(randomId, activityData);
+  // user = new User(userRepository.getUserData());
 }).then(() => {
-  displayAllData()
+  displayAllData();
 });
 
 function displayAllData() {
   updateUserDataDOM(userRepository.getUserData());
   compareStepGoal(userRepository.getUserData());
-  displayDailyOz();
-  displayWeeklyOz();
-  displayBestSleepers();
-  displayCurrentDate(getCurrentDate());
-  displaySleep();
-  displayActivity();
-  displayAverageWeeklyActivity();
-  displayWeeklyActivity();
-  friendActivityData(getCurrentDate());
-  displayTrends();
-  displaySleepChart()
+  // displayDailyOz();
+  // displayWeeklyOz();
+  // displayBestSleepers();
+  // displayCurrentDate(getCurrentDate());
+  // displaySleep();
+  // displayActivity();
+  // displayAverageWeeklyActivity();
+  // displayWeeklyActivity();
+  // friendActivityData(getCurrentDate());
+  // displayTrends();
+  // displaySleepChart()
 }
 
 function updateUserDataDOM(userInfo) {
