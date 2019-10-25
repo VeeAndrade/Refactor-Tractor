@@ -23,7 +23,7 @@ beforeEach(() => {
   hydrationRepository = new HydrationRepository(dataHydration, 12, [], [], dataHydration, []);
 });
 
-describe.only('HydrationRepository', () => {
+describe('HydrationRepository', () => {
   it('should be a function', () => {
     expect(HydrationRepository).to.be.a('function');
   });
