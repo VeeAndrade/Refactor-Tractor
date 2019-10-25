@@ -76,9 +76,10 @@ var sleepRepository;
 var activityRepository;
 var user;
 
-Promise.all([userData, sleepData]).then(element => {
+Promise.all([userData, sleepData, hydrationData]).then(element => {
   userData = element[0];
   sleepData = element[1];
+  hydrationData = element[2];
   randomId = Math.floor(Math.random() * (50 - 1) + 1);
   userRepository = new UserRepository(userData, randomId);
   // hydrationRepository = new HydrationRepository(hydrationData, randomId);
