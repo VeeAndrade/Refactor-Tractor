@@ -20,7 +20,7 @@ beforeEach(() => {
       { userID: 45, date: "2019/08/24", hoursSlept: 8.3, sleepQuality: 1.5 }
     ];
 
-  utilityRepo = new UtilityRepository([],dataSleep,[],[])
+  utilityRepo = new UtilityRepository([], dataSleep, dataActivity, [])
 })
 
 describe('UtilityRepository', () => {
