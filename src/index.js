@@ -89,7 +89,7 @@ Promise.all([userData, sleepData, hydrationData, activityData]).then(element => 
   sleepRepository = new SleepRepository(sleepData, randomId);
   hydrationRepository = new HydrationRepository(hydrationData, randomId);
   activityRepository = new ActivityRepository(randomId, activityData);
-  // user = new User(userRepository.getUserData());
+  user = new User(userRepository.getUserData());
 }).then(() => {
   displayAllData();
 });
@@ -97,17 +97,17 @@ Promise.all([userData, sleepData, hydrationData, activityData]).then(element => 
 function displayAllData() {
   updateUserDataDOM(userRepository.getUserData());
   compareStepGoal(userRepository.getUserData());
-  // displayDailyOz();
-  // displayWeeklyOz();
-  // displayBestSleepers();
-  // displayCurrentDate(getCurrentDate());
-  // displaySleep();
-  // displayActivity();
-  // displayAverageWeeklyActivity();
-  // displayWeeklyActivity();
-  // friendActivityData(getCurrentDate());
-  // displayTrends();
-  // displaySleepChart()
+  displayDailyOz();
+  displayWeeklyOz();
+  displayBestSleepers();
+  displayCurrentDate(getCurrentDate());
+  displaySleep();
+  displayActivity();
+  displayAverageWeeklyActivity();
+  displayWeeklyActivity();
+  friendActivityData(getCurrentDate());
+  displayTrends();
+  displaySleepChart();
 }
 
 function updateUserDataDOM(userInfo) {
