@@ -21,7 +21,6 @@ class HydrationRepository extends UtilityRepository {
   }
 
   totalOzDay(id, date, dataType) {
-    console.log(dataType);
     return this.getUserInfoByDate(id, date, dataType).numOunces;
   }
 
