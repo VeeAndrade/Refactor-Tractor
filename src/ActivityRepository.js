@@ -8,18 +8,13 @@ class ActivityRepository extends UtilityRepository {
     this.user = this.getUserLogs(id, "activityData")
   }
 
-  // getUserLogs(id) {
-    // return this.activityData.filter(user => user.userID === id);
-  //   this.getUserLogs(id, this.activityData)
-  // }
+  getUserLogs(id) {
+    return this.activityData.filter(user => user.userID === id);
+  }
 
   getUserDate(date) {
     return this.user.find(log => log.date === date);
   }
-
-  // getFilteredDate(date) {
-  //   return this.activityData.filter(log => log.date === date);
-  // }
 
   getMilesWalked(date, user) {
     const miles = (user.strideLength * this.getUserDate(date).numSteps) / 5280;
