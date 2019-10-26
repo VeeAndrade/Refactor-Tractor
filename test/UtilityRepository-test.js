@@ -21,6 +21,7 @@ beforeEach(() => {
     ];
 
   utilityRepo = new UtilityRepository([], dataSleep, dataActivity, [])
+
 })
 
 describe('UtilityRepository', () => {
