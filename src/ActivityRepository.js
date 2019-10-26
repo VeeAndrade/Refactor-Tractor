@@ -8,10 +8,6 @@ class ActivityRepository extends UtilityRepository {
     this.user = this.getUserLogs(id, "activityData")
   }
 
-  getUserLogs(id) {
-    return this.activityData.filter(user => user.userID === id);
-  }
-
   getUserDate(date) {
     return this.user.find(log => log.date === date);
   }
