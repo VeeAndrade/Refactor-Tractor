@@ -112,6 +112,12 @@ h3 {
   margin-bottom: 12px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .widget--container {
   display: flex;
   justify-content: space-between;
