@@ -87,7 +87,7 @@ Promise.all([userData, sleepData, hydrationData, activityData]).then(element => 
   randomId = Math.floor(Math.random() * (50 - 1) + 1);
   userRepository = new UserRepository(userData, randomId);
   sleepRepository = new SleepRepository(sleepData, randomId);
-  hydrationRepository = new HydrationRepository(hydrationData, randomId);
+  hydrationRepository = new HydrationRepository(hydrationData, randomId, [], [], hydrationData);
   activityRepository = new ActivityRepository(randomId, activityData);
   user = new User(userRepository.getUserData());
 }).then(() => {
@@ -145,14 +145,14 @@ function compareStepGoal(userInfo) {
 }
 
 function displayDailyOz() {
-  const waterDrank = hydrationRepository.totalOzDay(getCurrentDate());
+  const waterDrank = hydrationRepository.totalOzDay(randomId, getCurrentDate(), "hydrationData");
   $(`<h5>You have drank <span>${waterDrank}</span> oz today!</h5>`).appendTo(dailyOz);
 }
 
 function displayWeeklyOz() {
   let ozs = [];
   let dates = [];
-  const users = hydrationRepository.weeklyHydrationAvg(getCurrentDate());
+  const users = hydrationRepository.getWeeksData(randomId, getCurrentDate(), "hydrationData");
   users.forEach(log => {
     dates.push(new Date(log.date).toString().slice(0, 3));
     ozs.push(log.numOunces);
@@ -281,7 +281,7 @@ function friendActivityData(date) {
   let friends = [];
   let findFriends = userRepository.getFriends();
   findFriends.forEach(friend => {
-    let friendData = activityRepository.getUserLogs(friend);
+    let friendData = activityRepository.getUserLogs(friend, "activityData");
     let friendName = userRepository.getUserData(friend).name;
     let indexDay = friendData.findIndex(user => user.date === date);
     let friendWeeks = friendData.slice(indexDay - 6, indexDay + 1);

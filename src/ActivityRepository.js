@@ -1,20 +1,15 @@
-class ActivityRepository {
-  constructor(id, activityData) {
+import UtilityRepository from "../src/UtilityRepository";
+
+class ActivityRepository extends UtilityRepository {
+  constructor(id, activityData, sleepData, hydrationData, userData) {
+    super(userData, sleepData, hydrationData, activityData)
     this.id = id;
     this.activityData = activityData;
-    this.user = this.getUserLogs(id);
-  }
-
-  getUserLogs(id) {
-    return this.activityData.filter(user => user.userID === id);
+    this.user = this.getUserLogs(id, "activityData")
   }
 
   getUserDate(date) {
     return this.user.find(log => log.date === date);
-  }
-
-  getFilteredDate(date) {
-    return this.activityData.filter(log => log.date === date);
   }
 
   getMilesWalked(date, user) {
@@ -63,7 +58,7 @@ class ActivityRepository {
   }
 
   getAverages(date, property) {
-    const filteredDate = this.getFilteredDate(date);
+    const filteredDate = this.getAllUserInfoByDate(date, 'activityData');
     const total = filteredDate.reduce((total, log) => {
       total += log[property];
       return total;
