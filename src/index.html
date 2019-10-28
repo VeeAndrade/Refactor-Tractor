@@ -24,6 +24,41 @@
       </ul>
     </header>
     <main>
+      <section class="main__section--forms main__sections">
+          <h3 class="section__h3--title">Add New Log</h3>
+          <section class="forms--container widget--container">
+            <article class="forms__article--1 article--widget">
+              <h5>Add New Activity Log</h5>
+              <form>
+                <label for="steps">Today's Steps:</label>
+                <input type="number" name="steps">
+                <label for="minutes">Today's Minutes Active:</label>
+                <input type="number" name="minutes">
+                <label for="flights">Today's Flights Climbed:</label>
+                <input type="number" name="flights">
+                <button type="submit">Submit</button>
+              </form>
+            </article>
+            <article class="forms__article--2 article--widget">
+              <h5>Add New Hydration Log</h5>
+                <form>
+                  <label for="oz">Today's Ounces:</label>
+                  <input type="number" name="oz">
+                  <button class="hydration-button" type="submit">Submit</button>
+                </form>
+            </article>
+            <article class="forms__article--3 article--widget">
+              <h5>Add New Sleep Log</h5>
+              <form>
+                <label for="hours">Last Night's Hours Slept:</label>
+                <input type="number" name="hours">
+                <label for="quality">Last Night's Sleep Quality:</label>
+                <input type="number" name="quality">
+                <button class="sleep-button" type="submit">Submit</button>
+              </form>
+            </article>
+          </section>
+        </section>
       <section class="main__section--steps main__sections">
         <h3 class="section__h3--title">Steps</h3>
         <section class="steps--container widget--container">

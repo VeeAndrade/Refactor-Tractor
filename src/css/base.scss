@@ -115,6 +115,26 @@ h3 {
   margin-bottom: 12px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+label {
+  margin: 10px;
+}
+
+.hydration-button {
+  margin: 75px 0 0 0;
+}
+
+.sleep-button {
+  margin: 55px 0 0 0;
+}
+
 .widget--container {
   display: flex;
   justify-content: space-between;
