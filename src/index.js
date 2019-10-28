@@ -69,7 +69,7 @@ Promise.all([userData, sleepData, hydrationData, activityData]).then(element => 
   user = new User(userRepository.getUserData());
 }).then(() => {
   displayAllData();
-});
+})
 
 function displayAllData() {
   updateUserDataDOM(userRepository.getUserData());
@@ -85,6 +85,73 @@ function displayAllData() {
   friendActivityData(getCurrentDate());
   displayTrends();
   displaySleepChart();
+}
+
+$('#activity-submit').click(postNewActivityData);
+$('.hydration-button').click(postNewHydrationData);
+$('.sleep-button').click(postNewSleepData);
+
+function postNewActivityData(e) {
+  e.preventDefault();
+  fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userID: randomId,
+      date: getCurrentDate(),
+      numSteps: parseInt($('#todays-steps').val()),
+      minutesActive: parseInt($('#todays-minutes').val()),
+      flightsOfStairs: parseInt($('#todays-flights').val())
+      })
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+  $('#todays-steps').val('');
+  $('#todays-minutes').val('');
+  $('#todays-flights').val('');
+}
+
+function postNewHydrationData(e) {
+  e.preventDefault();
+  fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userID: randomId,
+      date: getCurrentDate(),
+      numOunces: parseInt($('#todays-ounces').val())
+      })
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+  $('#todays-ounces').val('');
+}
+
+function postNewSleepData(e) {
+  e.preventDefault();
+  fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userID: randomId,
+      date: getCurrentDate(),
+      hoursSlept: parseInt($('#todays-sleep-hours').val()),
+      sleepQuality: parseInt($('#todays-sleep-minutes').val())
+      })
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+  $('#todays-sleep-hours').val('');
+  $('#todays-sleep-minutes').val('');
 }
 
 function updateUserDataDOM(userInfo) {
