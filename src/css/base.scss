@@ -1,3 +1,4 @@
+@import 'index';
 @import 'largeCSS';
 
 :root {
@@ -191,27 +192,15 @@ h5 {
 }
 
 .friend-1 span {
-  background: -webkit-linear-gradient(#1a353f, #015492);
-  font-size: 1.75em;
-  font-weight: bold;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @include competition-style(1.75em, #1a353f, #015492);
 }
 
 .friend-2 span {
-  background: -webkit-linear-gradient(#707070, #9e9e9e);
-  font-size: 1.5em;
-  font-weight: bold;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @include competition-style(1.5em, #707070, #9e9e9e);
 }
 
 .friend-3 span {
-  background: -webkit-linear-gradient(#a0552a, #fc704d);
-  font-size: 1.1em;
-  font-weight: bold;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @include competition-style(1.1em, #a0552a, #fc704d);
 }
 
 .sleep-icon,
@@ -243,15 +232,11 @@ h5 {
 }
 
 .steps__article--3 {
-  color: #4e4e4e;
-  font-size: 1.15em;
-  font-weight: bold;
-  }
+  @include widget-text(#4e4e4e, 1.15em)
+}
 
 .steps__article--3 span {
-  color: var(--contrast-accent);
-  font-size: 1.75em;
-  font-weight: bold;
+  @include widget-text(var(--contrast-accent), 1.75em)
 }
 
 #step-trends {
@@ -268,9 +253,7 @@ h5 {
 }
 
 .all-time-sleep span {
-  color: var(--contrast-accent);
-  font-size: 1.5em;
-  font-weight: bold;
+  @include widget-text(var(--contrast-accent), 1.5em)
 }
 
 .all-time-sleep h5 {
@@ -294,9 +277,7 @@ h5 {
 }
 
 .article__widget--div span {
-  color: var(--contrast-accent);
-  font-size: 1.3em;
-  font-weight: bold;
+  @include widget-text(var(--contrast-accent), 1.3em)
 }
 
 .activity--container--2 {
@@ -314,9 +295,7 @@ h5 {
 }
 
 #compare-activity span {
-  color: var(--contrast-accent);
-  font-size: 1.3em;
-  font-weight: bold;
+  @include widget-text(var(--contrast-accent), 1.3em)
 }
 
 #compare-activity h5 {
