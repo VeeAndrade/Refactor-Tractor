@@ -24,6 +24,45 @@
       </ul>
     </header>
     <main>
+      <section class="main__section--forms main__sections">
+          <h3 class="section__h3--title">Add New Log</h3>
+          <section class="forms--container widget--container">
+            <article class="forms__article--1 article--widget">
+              <h5>Add New Activity Log</h5>
+              <form>
+                <label for="todays-steps">Today's Steps:</label>
+                <input type="number" name="steps" id="todays-steps">
+                <label for="todays-minutes">Today's Minutes Active:</label>
+                <input type="number" name="minutes" id="todays-minutes">
+                <label for="todays-flights">Today's Flights Climbed:</label>
+                <input type="number" name="flights" id="todays-flights">
+                <button type="submit" id="activity-submit">Submit</button>
+              </form>
+            </article>
+            <article class="forms__article--2 article--widget">
+              <h5>Add New Hydration Log</h5>
+                <form>
+                  <label for="todays-ounces">Today's Ounces:</label>
+                  <input type="number" name="oz" id="todays-ounces">
+                </form>
+                <form>
+                  <button class="hydration-button" type="submit">Submit</button>
+                </form>
+            </article>
+            <article class="forms__article--3 article--widget">
+              <h5>Add New Sleep Log</h5>
+              <form>
+                <label for="todays-sleep-hours">Last Night's Hours Slept:</label>
+                <input type="number" name="hours" id="todays-sleep-hours">
+                <label for="todays-sleep-quality">Last Night's Sleep Quality:</label>
+                <input type="number" name="quality" id="todays-sleep-quality">
+              </form>
+              <form>
+                <button class="sleep-button" type="submit">Submit</button>
+              </form>
+            </article>
+          </section>
+        </section>
       <section class="main__section--steps main__sections">
         <h3 class="section__h3--title">Steps</h3>
         <section class="steps--container widget--container">

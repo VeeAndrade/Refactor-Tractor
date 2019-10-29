@@ -1,3 +1,6 @@
+@import 'index';
+@import 'largeCSS';
+
 :root {
   --accent-color: #f9bb47;
   --background: #1a353f;
@@ -5,6 +8,7 @@
   --background-light: #015492;
   --light-text: #bfc0c0;
   --box-background: #ffffff;
+  --contrast-accent: #015492
 }
 
 * {
@@ -26,7 +30,7 @@ nav {
   background-image: linear-gradient(white, #e2e2e2);
   color: #2b8b9e;
   display: flex;
-  font-size: 18px;
+  font-size: 1.15em;
   height: 50px;
   justify-content: center;
   width: 100%;
@@ -42,12 +46,12 @@ nav div {
 header ul {
   background-color: #23586385;
   border-radius: 3px;
-  margin-top: 10px;
-  padding: 10px;
+  margin-top: 16px;
+  padding: 7px;
 }
 
 h6 {
-  font-size: 20px;
+  font-size: 1.2em;
 }
 
 header {
@@ -65,13 +69,12 @@ header {
 
 header p {
   color: #dbdbdb;
-  font-size: 18px;
+  font-size: 1.15em;
+  margin-top: 10px;
 }
 
 h1 {
   color: var(--accent-color);
-  font-size: 40px;
-  margin: 3px 0 0 0;
 }
 
 ul {
@@ -112,10 +115,46 @@ h3 {
   margin-bottom: 12px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+label {
+  margin: 10px;
+}
+
+.hydration-button {
+  margin: 75px 0 0 0;
+  @include button();
+}
+
+.sleep-button {
+  margin: 55px 0 0 0;
+  @include button();
+}
+
+#activity-submit {
+  @include button();
+}
+
 .widget--container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2px;
+  input {
+    width: 100%;
+  }
+  button {
+    margin: 9px 0 0 0;
+  }
+}
+
+.hydration--container {
+  max-height: 355px;
 }
 
 .article--widget {
@@ -151,8 +190,8 @@ h3 {
 
 .hydration__article--1 span,
 .sleep__article--1 span {
-  color: var(--accent-color);
-  font-size: 30px;
+  color: var(--contrast-accent);
+  font-size: 1.7em;
   font-weight: bold;
 }
 
@@ -166,13 +205,13 @@ h3 {
 
 h5 {
   color: #4d4d4d;
-  font-size: 18px;
+  font-size: 1.15em;
   margin: 10px 0 0 0;
   text-align: center;
 }
 
 #friend-weekly-steps {
-  font-size: 20px;
+  font-size: 1.2em;
 }
 
 #friend-weekly-steps li {
@@ -185,31 +224,19 @@ h5 {
 .friend-4 span,
 .friend-5 span {
   color: #6e6e6e;
-  font-size: 18px;
+  font-size: 1.1em;
 }
 
 .friend-1 span {
-  background: -webkit-linear-gradient(#f0a83d, #f0cf3d);
-  font-size: 28px;
-  font-weight: bold;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @include competition-style(1.75em, #1a353f, #015492);
 }
 
 .friend-2 span {
-  background: -webkit-linear-gradient(#707070, #9e9e9e);
-  font-size: 22px;
-  font-weight: bold;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @include competition-style(1.5em, #707070, #9e9e9e);
 }
 
 .friend-3 span {
-  background: -webkit-linear-gradient(#a0552a, #fc704d);
-  font-size: 18px;
-  font-weight: bold;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @include competition-style(1.1em, #a0552a, #fc704d);
 }
 
 .sleep-icon,
@@ -241,15 +268,11 @@ h5 {
 }
 
 .steps__article--3 {
-  color: #4e4e4e;
-  font-size: 20px;
-  font-weight: bold;
-  }
+  @include widget-text(#4e4e4e, 1.15em)
+}
 
 .steps__article--3 span {
-  color: var(--accent-color);
-  font-size: 30px;
-  font-weight: bold;
+  @include widget-text(var(--contrast-accent), 1.75em)
 }
 
 #step-trends {
@@ -266,13 +289,11 @@ h5 {
 }
 
 .all-time-sleep span {
-  color: var(--accent-color);
-  font-size: 32px;
-  font-weight: bold;
+  @include widget-text(var(--contrast-accent), 1.5em)
 }
 
 .all-time-sleep h5 {
-  font-size: 21px;
+  font-size: 1.4em;
   font-weight: bold;
 }
 
@@ -292,9 +313,7 @@ h5 {
 }
 
 .article__widget--div span {
-  color: #89be43;
-  font-size: 22px;
-  font-weight: bold;
+  @include widget-text(var(--contrast-accent), 1.3em)
 }
 
 .activity--container--2 {
@@ -312,13 +331,13 @@ h5 {
 }
 
 #compare-activity span {
-  color: var(--accent-color);
-  font-size: 23px;
-  font-weight: bold;
+  @include widget-text(var(--contrast-accent), 1.3em)
 }
 
 #compare-activity h5 {
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #weekly-steps-chart,

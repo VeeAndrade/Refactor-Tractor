@@ -1,0 +1,19 @@
+@mixin competition-style($size, $colorOne, $colorTwo) {
+  background: -webkit-linear-gradient($colorOne, $colorTwo);
+  font-size: $size;
+  font-weight: bold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin widget-text($color, $size) {
+  color: $color;
+  font-size: $size;
+  font-weight: bold;
+}
+
+@mixin button() {
+  padding: 8px;
+  border-radius: 10%;
+  cursor: pointer;
+}
