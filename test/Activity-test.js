@@ -1,9 +1,10 @@
-const chai = require('chai');
-const expect = chai.expect;
+import chai, { expect } from 'chai';
+import spies from 'chai-spies';
 
 import User from '../src/User';
 import ActivityRepository from '../src/ActivityRepository';
 
+chai.use(spies);
 
 let activityRepository, activityData, user, sampleData;
 
