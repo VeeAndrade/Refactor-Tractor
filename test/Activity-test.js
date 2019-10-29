@@ -1,9 +1,10 @@
-const chai = require('chai');
-const expect = chai.expect;
+import chai, { expect } from 'chai';
+import spies from 'chai-spies';
 
 import User from '../src/User';
 import ActivityRepository from '../src/ActivityRepository';
 
+chai.use(spies);
 
 let activityRepository, activityData, user, sampleData;
 
@@ -109,14 +110,35 @@ describe('ActivityRepository', () => {
   });
 
   it('should return the average number of stairs climbed for all users on a given date', () => {
+    chai.spy.on(activityRepository, 'getAllUserInfoByDate', () => {
+      return [
+        {"userID": 13, "date": "2019/08/25", "numSteps": 9352, "minutesActive": 567, "flightsOfStairs": 143},
+        { "userID": 5, "date": "2019/08/25", "numSteps": 6425, "minutesActive": 67, "flightsOfStairs": 42},
+        { "userID": 6, "date": "2019/08/25", "numSteps": 842, "minutesActive": 43, "flightsOfStairs": 86 } 
+      ];
+    })
     expect(activityRepository.getAverages('2019/08/25', 'flightsOfStairs')).to.equal(90);
   });
 
   it('should return the average number of steps taken for all users on a given date', () => {
+    chai.spy.on(activityRepository, 'getAllUserInfoByDate', () => {
+      return [
+        {"userID": 13, "date": "2019/08/25", "numSteps": 9352, "minutesActive": 567, "flightsOfStairs": 143},
+        { "userID": 5, "date": "2019/08/25", "numSteps": 6425, "minutesActive": 67, "flightsOfStairs": 42},
+        { "userID": 6, "date": "2019/08/25", "numSteps": 842, "minutesActive": 43, "flightsOfStairs": 86 } 
+      ];
+    })
     expect(activityRepository.getAverages('2019/08/25', 'numSteps')).to.equal(5540);
   });
 
   it('should return the average number of minutes active for all users on a given date', () => {
+    chai.spy.on(activityRepository, 'getAllUserInfoByDate', () => {
+      return [
+        {"userID": 13, "date": "2019/08/25", "numSteps": 9352, "minutesActive": 567, "flightsOfStairs": 143},
+        { "userID": 5, "date": "2019/08/25", "numSteps": 6425, "minutesActive": 67, "flightsOfStairs": 42},
+        { "userID": 6, "date": "2019/08/25", "numSteps": 842, "minutesActive": 43, "flightsOfStairs": 86 } 
+      ];
+    })
     expect(activityRepository.getAverages('2019/08/25', 'minutesActive')).to.equal(226);
   });
 
