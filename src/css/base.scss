@@ -330,6 +330,8 @@ h5 {
 
 #compare-activity h5 {
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #weekly-steps-chart,
