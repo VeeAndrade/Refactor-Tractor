@@ -1,8 +1,9 @@
-const chai = require('chai');
-const expect = chai.expect;
+import chai, { expect } from 'chai';
+import spies from 'chai-spies';
 
 import HydrationRepository from '../src/HydrationRepository';
-import UtilityRepository from '../src/UtilityRepository';
+
+chai.use(spies);
 
 let dataHydration, hydrationRepository;
 
@@ -52,6 +53,9 @@ describe('HydrationRepository', () => {
   });
 
   it('should return how many fluid oz they consumed for a specific day', () => {
+    chai.spy.on(hydrationRepository, 'getUserInfoByDate', () => {
+      return { userID: 12, date: "2019/08/22", numOunces: 58 }
+    })
     expect(hydrationRepository.totalOzDay(12, '2019/08/22', 'hydrationData')).to.equal(58);
   });
 
