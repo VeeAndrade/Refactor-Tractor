@@ -1,17 +1,21 @@
-const chai = require('chai');
-const expect = chai.expect;
+import chai, {expect} from 'chai';
+import spies from 'chai-spies';
 
 import SleepRepository from '../src/SleepRepository';
+import UtilityRepository from '../src/UtilityRepository'
 
-let dataSleep, dataSleep2, sleepRepository, sleepRepository2;
+chai.use(spies);
 
-beforeEach(() => {
-  dataSleep =
+describe('SleepRepository', () => {
+  
+  let dataSleep, dataSleep2, sleepRepository, sleepRepository2, utility;
+  
+  beforeEach(() => {
+    dataSleep =
     [
       { userID: 45, date: "2019/08/16", hoursSlept: 9.9, sleepQuality: 2.8 },
       { userID: 45, date: "2019/08/17", hoursSlept: 6.9, sleepQuality: 4.5 },
       { userID: 45, date: "2019/08/18", hoursSlept: 7.3, sleepQuality: 2.1 },
-      { userID: 46, date: "2019/08/18", hoursSlept: 9.2, sleepQuality: 1.5 },
       { userID: 45, date: "2019/08/19", hoursSlept: 7, sleepQuality: 4.2 },
       { userID: 45, date: "2019/08/20", hoursSlept: 10.4, sleepQuality: 4.3 },
       { userID: 45, date: "2019/08/21", hoursSlept: 7.8, sleepQuality: 1.7 },
@@ -20,7 +24,7 @@ beforeEach(() => {
       { userID: 45, date: "2019/08/24", hoursSlept: 8.3, sleepQuality: 1.5 }
     ];
 
-  dataSleep2 =
+    dataSleep2 =
     [
       { userID: 1, date: "2019/08/15", hoursSlept: 9.9, sleepQuality: 3.8 },
       { userID: 1, date: "2019/08/16", hoursSlept: 6.9, sleepQuality: 3.5 },
@@ -52,11 +56,12 @@ beforeEach(() => {
       { userID: 4, date: "2019/08/21", hoursSlept: 24, sleepQuality: 3.0 },
     ];
 
-  sleepRepository = new SleepRepository(dataSleep, 45);
-  sleepRepository2 = new SleepRepository(dataSleep2, 2);
-});
+    sleepRepository = new SleepRepository(dataSleep, [], [], [], 45);
+    sleepRepository2 = new SleepRepository(dataSleep2, [], [], [], 2);
+    utility = new UtilityRepository([], dataSleep, [], []);
 
-describe('SleepRepository', () => {
+  });
+
   it('should be a function', () => {
     expect(SleepRepository).to.be.a('function');
   });
@@ -66,7 +71,7 @@ describe('SleepRepository', () => {
   });
 
   it('should be able to filter the user"s data by ID', () => {
-    expect(sleepRepository.getSleepData()).to.deep.equal(
+    expect(sleepRepository.getUserLogs(45, "sleepData")).to.deep.equal(
       [
         { userID: 45, date: "2019/08/16", hoursSlept: 9.9, sleepQuality: 2.8 },
         { userID: 45, date: "2019/08/17", hoursSlept: 6.9, sleepQuality: 4.5 },
@@ -82,6 +87,9 @@ describe('SleepRepository', () => {
   });
 
   it('should return the user"s average number of hours slept per day', () => {
+   chai.spy.on(sleepRepository, 'getTotal', () => {
+     return {total:77, userInfo: dataSleep}
+   })
     expect(sleepRepository.getAllTimeAvg()).to.equal(8.6);
   });
 
@@ -136,7 +144,7 @@ describe('SleepRepository', () => {
   });
 
   it('should return the average sleep quality of all users', () => {
-    expect(sleepRepository.getAvgQuality()).to.equal(2.7); //2.72
+    expect(sleepRepository.getAvgQuality()).to.equal(2.9); 
   });
 
   it('should find all users who average a sleep quality greater than 3 for a given week', () => {

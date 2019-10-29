@@ -5,7 +5,7 @@ class UtilityRepository {
     this.hydrationData = hydrationData;
     this.activityData = activityData;
   }
-  
+
   getUserLogs(id, dataType) {
     return this[dataType].filter(user => user.userID === id);
   }

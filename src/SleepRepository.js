@@ -1,35 +1,25 @@
-class SleepRepository {
-  constructor(sleepData, id) {
+import UtilityRepository from './UtilityRepository';
+class SleepRepository extends UtilityRepository {
+  constructor(sleepData, userData, hydrationData, activityData, id) {
+    super(userData, sleepData, userData, hydrationData, activityData);
     this.sleepData = sleepData;
     this.id = id;
-    this.user = this.getSleepData();
-  }
-
-  getSleepData() {
-    return this.sleepData.filter(user => user.userID === this.id);
+    this.user = this.getUserLogs(this.id, 'sleepData');
   }
 
   getAllTimeAvg() {
-    const total = this.getTotalOf('hoursSlept', 'user')
+    const total = this.getTotal(this.id, 'user', 'hoursSlept').total
     return parseFloat((total / this.user.length).toFixed(1));
   }
 
   getQualitySleepAvg() {
-    const total = this.getTotalOf('sleepQuality', 'user')
+    const total = this.getTotal(this.id, 'user', 'sleepQuality').total
     return parseFloat((total / this.user.length).toFixed(1));
   }
 
   getAvgQuality() {
-    const total = this.getTotalOf('sleepQuality', 'sleepData')
+    const total = this.getTotal(this.id, 'sleepData', 'sleepQuality').total
     return parseFloat((total / this.sleepData.length).toFixed(1));
-  }
-
-  getTotalOf(metric, datatype) {
-    const total = this[datatype].reduce((acc, day) => {
-      acc += day[metric];
-      return acc;
-    }, 0);
-    return total;
   }
 
   getDailySleepHours(date) {
@@ -40,6 +30,7 @@ class SleepRepository {
     let i = user.findIndex(day => day.date === date);
     return this.user.slice(i - 6, i + 1);
   }
+
 
   getWeeklyMetric(date, metric) {
     return this.weeklySleepData(date).map(day => {
