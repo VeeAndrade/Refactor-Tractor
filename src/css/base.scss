@@ -129,19 +129,16 @@ label {
 
 .hydration-button {
   margin: 75px 0 0 0;
-  padding: 8px;
-  border-radius: 10%;
+  @include button();
 }
 
 .sleep-button {
   margin: 55px 0 0 0;
-  padding: 8px;
-  border-radius: 10%;
+  @include button();
 }
 
 #activity-submit {
-  padding: 8px;
-  border-radius: 10%;
+  @include button();
 }
 
 .widget--container {
