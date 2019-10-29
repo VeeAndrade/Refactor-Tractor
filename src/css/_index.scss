@@ -11,3 +11,9 @@
   font-size: $size;
   font-weight: bold;
 }
+
+@mixin button() {
+  padding: 8px;
+  border-radius: 10%;
+  cursor: pointer;
+}
