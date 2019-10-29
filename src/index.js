@@ -144,14 +144,14 @@ function postNewSleepData(e) {
       userID: randomId,
       date: getCurrentDate(),
       hoursSlept: parseInt($('#todays-sleep-hours').val()),
-      sleepQuality: parseInt($('#todays-sleep-minutes').val())
+      sleepQuality: parseInt($('#todays-sleep-quality').val())
       })
   })
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(err => console.log(err));
   $('#todays-sleep-hours').val('');
-  $('#todays-sleep-minutes').val('');
+  $('#todays-sleep-quality').val('');
 }
 
 function updateUserDataDOM(userInfo) {
