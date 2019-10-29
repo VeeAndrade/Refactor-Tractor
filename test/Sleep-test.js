@@ -87,8 +87,8 @@ describe('SleepRepository', () => {
   });
 
   it('should return the user"s average number of hours slept per day', () => {
-   chai.spy.on(SleepRepository, 'ggetTotal', () => {
-     return {userID: 12, date: "2019/08/22", numOunces: 58}
+   chai.spy.on(sleepRepository, 'getTotal', () => {
+     return {total:77, userInfo: dataSleep}
    })
     expect(sleepRepository.getAllTimeAvg()).to.equal(8.6);
   });
