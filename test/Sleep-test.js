@@ -1,8 +1,10 @@
-const chai = require('chai');
-const expect = chai.expect;
+import chai, {expect} from 'chai';
+import spies from 'chai-spies';
 
 import SleepRepository from '../src/SleepRepository';
 import UtilityRepository from '../src/UtilityRepository'
+
+chai.use(spies);
 
 describe('SleepRepository', () => {
   
@@ -85,6 +87,9 @@ describe('SleepRepository', () => {
   });
 
   it('should return the user"s average number of hours slept per day', () => {
+   chai.spy.on(SleepRepository, 'ggetTotal', () => {
+     return {userID: 12, date: "2019/08/22", numOunces: 58}
+   })
     expect(sleepRepository.getAllTimeAvg()).to.equal(8.6);
   });
 
