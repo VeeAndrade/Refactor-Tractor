@@ -4,37 +4,23 @@ class SleepRepository extends UtilityRepository {
     super(userData, sleepData, userData, hydrationData, activityData);
     this.sleepData = sleepData;
     this.id = id;
-    this.user = super.getUserLogs(this.id, 'sleepData');
+    this.user = this.getUserLogs(this.id, 'sleepData');
   }
 
-  // getSleepData() {
-  //   return this.sleepData.filter(user => user.userID === this.id);
-  // }
-
   getAllTimeAvg() {
-    const total = super.getTotal(this.id, 'user', 'hoursSlept').total
+    const total = this.getTotal(this.id, 'user', 'hoursSlept').total
     return parseFloat((total / this.user.length).toFixed(1));
   }
 
-  
-
   getQualitySleepAvg() {
-    const total = super.getTotal(this.id, 'user', 'sleepQuality').total
+    const total = this.getTotal(this.id, 'user', 'sleepQuality').total
     return parseFloat((total / this.user.length).toFixed(1));
   }
 
   getAvgQuality() {
-    const total = super.getTotal(this.id, 'sleepData', 'sleepQuality').total
+    const total = this.getTotal(this.id, 'sleepData', 'sleepQuality').total
     return parseFloat((total / this.sleepData.length).toFixed(1));
   }
-
-  // getTotalOf(metric, datatype) {
-  //   const total = this[datatype].reduce((acc, day) => {
-  //     acc += day[metric];
-  //     return acc;
-  //   }, 0);
-  //   return total;
-  // }
 
   getDailySleepHours(date) {
     return this.user.find(day => day.date === date).hoursSlept;
