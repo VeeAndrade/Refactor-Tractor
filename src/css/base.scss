@@ -1,5 +1,4 @@
 @import 'index';
-@import 'largeCSS';
 
 :root {
   --accent-color: #f9bb47;
@@ -341,3 +340,5 @@ h5 {
 #weekly-flights-chart {
   margin: 25px 0;
 }
+
+@import 'largeCSS';
